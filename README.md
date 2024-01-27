@@ -18,11 +18,14 @@
 - Initialiser la struct ( mettre ce que j'ai besoin dedans )    ❌
 
 
+### Faire un Makefile 
+- Makefile ❌
 
 
-  ✅
-  
-  ❌
+
+
+
+   ✅ ❌
 
  
 
