@@ -6,9 +6,9 @@
 - dup2 ✅
 - execve ✅ 
 - fork ✅
-- wait ✅
+- unlink ✅
 - pipe ✅
-- unlink ❌ 
+- wait ❌ 
 
 > [!IMPORTANT]
 > Source : https://reactive.so/post/42-a-comprehensive-guide-to-pipex
