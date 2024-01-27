@@ -7,7 +7,7 @@
 - execve ✅ 
 - fork ✅
 - wait ✅
-- pipe ❌ 
+- pipe ✅
 - unlink ❌ 
 
 > [!IMPORTANT]
