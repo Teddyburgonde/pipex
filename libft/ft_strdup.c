@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tebandam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/10/30 12:23:08 by tebandam          #+#    #+#             */
+/*   Updated: 2023/11/09 10:11:35 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <stdlib.h>
+char	*ft_strdup(const char *s)
+{
+	char		*tab;
+	int			i;
 
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
-
-
-
-
-#endif
+	i = 0;
+	tab = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (tab)
+	{
+		while (s[i])
+		{
+			tab[i] = s[i];
+			i++;
+		}
+		tab[i] = '\0';
+	}
+	return ((char *)tab);
+}

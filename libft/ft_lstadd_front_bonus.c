@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tebandam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/10/30 12:51:26 by tebandam          #+#    #+#             */
+/*   Updated: 2023/10/30 12:51:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <stdlib.h>
-
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
-
-
-
-
-#endif
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}

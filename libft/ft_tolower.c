@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tebandam <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/10/30 12:16:57 by tebandam          #+#    #+#             */
+/*   Updated: 2023/10/30 12:16:59 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-#include <fcntl.h>
-#include <stdlib.h>
-
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
-
-
-
-
-#endif
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
+}

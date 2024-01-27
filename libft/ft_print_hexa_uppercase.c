@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_print_hexa_uppercase.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/11/09 18:43:18 by tebandam          #+#    #+#             */
+/*   Updated: 2023/11/10 11:11:42 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libftprintf.h"
 
-#include <fcntl.h>
-#include <stdlib.h>
+int	ft_print_hexa_uppercase(unsigned int nb)
+{
+	char	*uppercase;
+	int		print_length;
 
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
-
-
-
-
-#endif
+	print_length = 0;
+	uppercase = "0123456789ABCDEF";
+	if (nb >= 16)
+		print_length = ft_print_hexa_uppercase(nb / 16);
+	print_length += 1;
+	write(1, &uppercase[nb % 16], 1);
+	return (print_length);
+}

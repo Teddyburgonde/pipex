@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/11/20 17:40:15 by tebandam          #+#    #+#             */
+/*   Updated: 2023/12/24 12:29:53 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H 
 
-#include <fcntl.h>
-#include <stdlib.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
 
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
+# include <unistd.h>
+# include <stdlib.h>
 
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
+# include "libft.h"
 
+char	*get_next_line(int fd);
 
-
-
-#endif
+#endif 

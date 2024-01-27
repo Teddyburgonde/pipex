@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/27 17:01:39 by tebandam         ###   ########.fr       */
+/*   Created: 2023/11/10 10:22:21 by tebandam          #+#    #+#             */
+/*   Updated: 2023/11/10 10:38:11 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-#include <fcntl.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
 
-typedef struct s_vars{
-	
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	*path_cmd1;
-	char	*path_cmd2;
-}t_vars;
-
-
-
+int				ft_printf(char *str, ...);
+int				ft_putstr(char *str);
+int				ft_putchar(char c);
+int				ft_print_hexa_lowercase(unsigned int nb);
+int				ft_print_hexa_uppercase(unsigned int nb);
+int				print_ptr_hexa(unsigned long nb);
+int				ft_unsigned_int_putnbr(unsigned int n);
+int				ft_putnbr(int nb);
 
 #endif
