@@ -13,7 +13,7 @@
 
 ### PARSING
 
-- Verifier si il y a le bon nombres d'arguments   ❌
+- Verifier si il y a le bon nombres d'arguments   ✅
 - Verifier si j'ai le droit d'ouvrir le fichier   ❌
 - Initialiser la struct ( mettre ce que j'ai besoin dedans )    ❌
 
