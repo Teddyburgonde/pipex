@@ -1,4 +1,4 @@
-# pipex
+# PIPEX
 
 ### Apprendre les fonctions : 
 
@@ -10,4 +10,5 @@
 - pipe ❌ 
 - unlink ❌ 
 
-
+> [!IMPORTANT]
+> Source : Romain
