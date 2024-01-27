@@ -1,6 +1,6 @@
-### pipex
+# pipex
 
-## Apprendre les fonctions : 
+### Apprendre les fonctions : 
 
 - access ✅
 - dup2 ✅
