@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = main.c
+SRCS = main.c message_error.c 
 
 OBJS=$(SRCS:.c=.o)
 
@@ -13,19 +13,19 @@ CFLAGS= -Wall -Wextra -Werror -I./libft/includes -g
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	make --directory ./libft 
-	$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $@
+	@$(MAKE) --directory ./libft > /dev/null 2>&1
+	@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $@
 	@if [ $$? -eq 0 ]; then \
 		echo "\033[32;1mCompilation successful!\033[0m"; \
 	fi
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 clean: 
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean $(NAME)
 
