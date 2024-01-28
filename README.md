@@ -2,8 +2,7 @@
 
 ### Apprendre les fonctions : 
 
-- access ![image](https://github.com/Teddyburgonde/pipex/assets/93845046/3488ed9d-704d-40cb-84be-4507f1c59156)
-
+- access ✅
 - dup2 ✅
 - execve ✅ 
 - fork ✅
