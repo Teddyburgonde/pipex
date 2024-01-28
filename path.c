@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message_error.c                                    :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:06:10 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/28 18:39:30 by tebandam         ###   ########.fr       */
+/*   Created: 2024/01/28 15:21:08 by tebandam          #+#    #+#             */
+/*   Updated: 2024/01/28 18:10:41 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	message_wrong_number_of_arguments(void)
+char	*find_path(char **envp)
 {
-	ft_printf("Error\npipex : ./pipex file1 cmd1 cmd2 file2\n");
-	exit(1);
-}
+	int	i;
 
-void	message_not_permissions(void)
-{
-	ft_printf("Error\nYou don't have permission to open the file\n");
-	exit(1);
+	i = 0;
+	while (ft_strncmp("PATH", envp[i], 4) != 0)
+		i++;
+	return (envp[i] + 5);
 }
-
-void	message_pipe_error(void)
-{
-	ft_printf("Error\nThe pipe couldn't be created");
-}
-

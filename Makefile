@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = main.c message_error.c 
+SRCS = main.c message_error.c path.c
 
 OBJS=$(SRCS:.c=.o)
 
