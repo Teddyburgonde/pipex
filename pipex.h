@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/28 18:41:42 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/01/29 10:45:32 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_vars{
 	char	**arg_cmd1;
 	char	**arg_cmd2;
 
-	char	*paths;
+	char	**paths;
 	char	*path_cmd1;
 	char	*path_cmd2;
 	int		tube[2];
@@ -32,6 +32,6 @@ typedef struct s_vars{
 void	message_wrong_number_of_arguments(void);
 void	message_not_permissions(void);
 void	message_pipe_error(void);
-char	*find_path(char **envp);
+char	*find_path(char **envp, t_vars *vars);
 
 #endif
