@@ -22,8 +22,21 @@
 	. isoler la parti de la commande qu'il me faut ✅
 	. verifier avec quel parti du path la commande est executable (X_OK) ❌ 
 		. rassemble la commande **arg_cmd1 avec le lien corespondant. ✅
-		. faire une boucle qui permet de trouver quel est le lien qui est executable 
-		et quand je l'ai trouver l'envoyer a path_cmd1.
+		. trouver le chemin executable ❌
+		. l'envoyer a path_cmd1 ❌
+	
+### Processus enfant 
+
+- Capture la sortie standard et le mettre dans un tube ❌
+- Fermer l'autre bout du tube. ❌
+- Le rediriger vers un fichier d'entrée ❌
+- La commande argv[2] la decouper en deux et la stock dans un tab ❌
+- Verifier si on trouve le bon chemin pour la commande ❌
+- Gestion des cas d'erreur ❌
+- free + message d'erreur + exit ❌
+- Exerve (remplace le processus actuel par le nouveau executable, le chemin complet) ❌
+
+
 
 ### Creation de la struct 
 
@@ -34,8 +47,7 @@
 - Makefile ✅
 
 ### Comprendre l'importance de fork dans ce projet 
-- comprendre pourquoi utiliser fork ✔️
-   
+- comprendre pourquoi utiliser fork ✅ 
    
    ✅ ❌
 
@@ -43,3 +55,4 @@
 
 > [!IMPORTANT]
 > Source : https://reactive.so/post/42-a-comprehensive-guide-to-pipex
+
