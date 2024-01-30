@@ -37,6 +37,7 @@
 		. verifier avec quel parti du path la commande est executable (X_OK) ✅ 
 		. rassemble la commande **arg_cmd1 avec le lien corespondant. ✅
 		. trouver le chemin executable ✅
+		. mettre une valeur dans arg_cmd1[] ❌
 		. l'envoyer a arg_cmd1[0] ✅
 		. l'envoyer a arg_cmd2[0] ❌
 
