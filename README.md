@@ -34,7 +34,7 @@
 - Makefile ✅
 
 ### Comprendre l'importance de fork dans ce projet 
-- comprendre pourquoi utiliser fork ❌
+- comprendre pourquoi utiliser fork ✔️
    
    
    ✅ ❌
