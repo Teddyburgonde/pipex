@@ -10,15 +10,17 @@
 - pipe ✅
 - wait ✅
 
+### Comprendre l'importance de fork dans ce projet 
+
+- Comprendre pourquoi utiliser fork ✅ 
+
 ### Creation de la struct 
 
 - Creer la struct  ✅
 
 ### Faire un Makefile 
-- Makefile ✅
 
-### Comprendre l'importance de fork dans ce projet 
-- Comprendre pourquoi utiliser fork ✅ 
+- Makefile ✅
 
 ### PARSING
 
@@ -26,20 +28,29 @@
 - Verifier si j'ai le droit d'ouvrir le premier fichier   ✅
 - Verifier si j'ai le droit d'ouvrir le deuxieme fichier ✅
 
-
 ### TROUVER LE CHEMIN ET VOIR SI LA COMMANDE EST VALIDE
 
 - Verifier si la commande est valid : ✅
 	. trouver si le chemin existe (path envp)  ✅
-	. separer le path (ils sont separer par : donc use split) ✅
+	. separer le path (ils sont separer par : donc utiliser split) ✅
 	. isoler la parti de la commande qu'il me faut ✅
 	. Creer une function qui :
 		. verifier avec quel parti du path la commande est executable (X_OK) ✅ 
 		. rassemble la commande **arg_cmd1 avec le lien corespondant. ✅
 		. trouver le chemin executable ✅
-		. mettre une valeur dans arg_cmd1[] ❌
-		. l'envoyer a arg_cmd1[0] ✅
-		. l'envoyer a arg_cmd2[0] ❌
+		. mettre une valeur dans arg_cmd1[0]✅
+		. Mettre la valeur dans arg_cmd2[0] ✅
+
+### Initialiser les arg_cmd
+
+- Initialiser arg_cmd1 ✅
+- Initialiser arg_cmd2 ✅
+
+### Envoyer les valeurs aux arg_cmd 
+
+- L'envoyer a arg_cmd1[0] ✅
+- L'envoyer a arg_cmd2[0] ✅
+
 
 ### Processus enfant 
 
@@ -51,8 +62,6 @@
 - Gestion des cas d'erreur ❌
 - free + message d'erreur + exit ❌
 - Exerve (remplace le processus actuel par le nouveau executable, le chemin complet) ❌
-
-
 
 
    
