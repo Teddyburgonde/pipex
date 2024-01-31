@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 20:04:42 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/01/31 21:17:46 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 # include <sys/wait.h>
 
 typedef struct s_vars{
-	pid_t	pid;
-	char	**arg_cmd1;
-	char	**arg_cmd2;
-
-	char	**paths;
+	int		fd_child;
+	int		fd_parent;
+	int		pipe[2];
 	char	*path_cmd1;
 	char	*path_cmd2;
-	int		pipe[2];
-	int		fd1[2];
+	char	**arg_cmd1;
+	char	**arg_cmd2;
+	char	*file1;
+	char	*file2;
+	pid_t	pid;
+	char	**paths;  //???
 }t_vars;
 
 void	message_wrong_number_of_arguments(void);
