@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 11:36:55 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:00:24 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ int	main(int argc, char **argv, char *envp[])
 	if (pipe(vars.tube) == -1)
 		message_pipe_error();
 	find_path(envp, &vars);
-	init_arg_cmd(&vars, argv);
+	init_arg_cmd1(&vars, argv);
+	init_arg_cmd2(&vars, argv);
 	accessible_path(argv[2], &vars, 1);
-	ft_printf("%s", vars.arg_cmd1[0]);
+	//ft_printf("%s", vars.arg_cmd2[0]);
 	accessible_path(argv[3], &vars, 2);
 	//ft_find(vars.arg_cmd1[0]);
 	//ft_find(vars.arg_cmd2[0]);

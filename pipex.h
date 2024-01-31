@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 10:30:30 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:40:47 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	message_wrong_number_of_arguments(void);
 void	message_not_permissions(void);
 void	message_pipe_error(void);
 char	*find_path(char **envp, t_vars *vars);
-void 	init_arg_cmd(t_vars *vars, char **argv);
-
+void 	init_arg_cmd1(t_vars *vars, char **argv);
+void 	init_arg_cmd2(t_vars *vars, char **argv);
 #endif
