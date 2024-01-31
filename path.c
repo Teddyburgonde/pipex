@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:21:08 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/30 17:41:02 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:57:30 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,79 @@ char	*find_path(char **envp, t_vars *vars)
 	return (NULL);
 }
 
-void	init_arg_cmd(t_vars *vars, char **argv)
+int	ft_strlen_mod(char *str)
 {
-	vars->arg_cmd1 = malloc(sizeof(char*) *3);
-	vars->arg_cmd2 = malloc(sizeof(char*) *3);
+	int	i;
+	int	save;
 
-	vars->arg_cmd1[0] = NULL;
-	// ft_strlen modifier qui compte apres un espace et je fais un malloc de cette taille
-	// i + 1
-	// voir si je compte l'espace. 
-	// sur la chaine argv[2]
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 32)
+			break;
+		i++;
+	}
+	i++;
+	save = i;
+	while (str[save])
+		save++;
+	save = save - i;
+	return (save);
+}
+int	search_espace(char *str)
+{
+	int	i;
 
-	// si il y a pas d'espace dans argv[2]
-	//vars->arg_cmd1 == NULL;
-	
-	// a la fin je met un NULL; 
-	vars->arg_cmd1[1] = ft_split(argv[2], ' ');
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 32)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
 
-// arg_cmd1[0] == NULL;
-// arg_cmd1[1] == argv[2];
+void init_arg_cmd(t_vars *vars, char **argv)
+{
+    int size;
+
+    vars->arg_cmd1 = malloc(sizeof(char *) * 3);
+    vars->arg_cmd2 = malloc(sizeof(char *) * 3);
+
+    if (!vars->arg_cmd1 || !vars->arg_cmd2)
+        exit(1);
+    size = ft_strlen_mod(argv[2]);
+    vars->arg_cmd1[0] = NULL;
+    if (argv[2] && search_espace(argv[2]) == 0)
+        vars->arg_cmd1[1] = NULL;
+    else if (argv[2])
+    {
+        vars->arg_cmd1[1] = malloc(size + 1);
+        if (!vars->arg_cmd1[1])
+           exit(1);
+        ft_strncpy(vars->arg_cmd1[1], &argv[2][search_espace(argv[2]) + 1], size + 1);
+        vars->arg_cmd1[1][size] = '\0';
+        ft_printf("%s\n", vars->arg_cmd1[1]);
+    }
+    vars->arg_cmd1[2] = NULL; // liberer de la memoire
+}
