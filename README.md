@@ -82,5 +82,3 @@
  
 > [!IMPORTANT]
 > Source : https://reactive.so/post/42-a-comprehensive-guide-to-pipex
-
-|Je vais me detendre

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:45:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/01 16:27:04 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/01 18:11:15 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ void	child_process(t_vars *vars, char **envp)
 void	parent_process(t_vars *vars, char **envp)
 {
 	wait(NULL);
-	vars->fd_parent = open(vars->file2, O_RDONLY);
+	vars->fd_parent = open(vars->file2, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (vars->fd_parent == -1)
+	{
+		ft_printf("Error\n");
+		ft_free(vars->arg_cmd1);
+		ft_free(vars->arg_cmd2);
+		free(vars);
 		exit(1);
+	}
 	dup2(vars->fd_parent, 0);
 	dup2(vars->pipe[1], 1);
 	if (execve(vars->arg_cmd2[0], vars->arg_cmd2, envp) == -1)
