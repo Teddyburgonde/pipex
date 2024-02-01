@@ -6,25 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 20:52:09 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:55:20 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/includes/libftprintf.h"
 #include "./libft/includes/libft.h"
 #include "pipex.h"
-
-// void process_child()
-// {
-// 	t_vars vars;
-	
-// 	dup2(vars.tube[1], 1);
-// 	close(vars.tube[0]); 
-	
-// }
-//./pipex file1 cmd1 cmd2 file2
-
-#include <string.h>
 
 void	accessible_path(char *argv, t_vars *vars, int cmd)
 {
@@ -57,7 +45,6 @@ void	accessible_path(char *argv, t_vars *vars, int cmd)
 	}
 }
 
-
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars vars;
@@ -76,9 +63,9 @@ int	main(int argc, char **argv, char *envp[])
 	accessible_path(argv[3], &vars, 2);
 	vars.pid = fork();
 	if (vars.pid == 0)
-		child_process(&vars);
+		child_process(&vars, envp);
 	else
-		parent_process(&vars);
+		parent_process(&vars, envp);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 21:17:46 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:54:12 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/wait.h>
+# include <unistd.h>
 
 typedef struct s_vars{
+	pid_t	pid;
 	int		fd_child;
 	int		fd_parent;
 	int		pipe[2];
@@ -29,8 +31,7 @@ typedef struct s_vars{
 	char	**arg_cmd2;
 	char	*file1;
 	char	*file2;
-	pid_t	pid;
-	char	**paths;  //???
+	char	**paths;  
 }t_vars;
 
 void	message_wrong_number_of_arguments(void);
@@ -39,7 +40,7 @@ void	message_pipe_error(void);
 char	*find_path(char **envp, t_vars *vars);
 void 	init_arg_cmd1(t_vars *vars, char **argv);
 void 	init_arg_cmd2(t_vars *vars, char **argv);
-void	child_process(t_vars *vars);
-void	parent_process(t_vars *vars);
+void	child_process(t_vars *vars, char **envp);
+void	parent_process(t_vars *vars, char **envp);
 
 #endif

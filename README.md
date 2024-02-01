@@ -54,21 +54,33 @@
 
 ### Processus enfant 
 
-- Capture la sortie standard et le mettre dans un tube ❌
-- Fermer l'autre bout du tube. ❌
-- Le rediriger vers un fichier d'entrée ❌
-- La commande argv[2] la decouper en deux et la stock dans un tab ❌
-- Verifier si on trouve le bon chemin pour la commande ❌
-- Gestion des cas d'erreur ❌
-- free + message d'erreur + exit ❌
-- Exerve (remplace le processus actuel par le nouveau executable, le chemin complet) ❌
+- Capture la sortie standard et le mettre dans un tube ✅
+- Fermer l'autre bout du tube. ✅
+- Le rediriger vers un fichier d'entrée ✅
+- La commande argv[2] la decouper en deux et la stock dans un tab ✅
+- Verifier si on trouve le bon chemin pour la commande ✅
+- Gestion des cas d'erreur ✅
+- free + message d'erreur + exit ✅
+- Exerve (remplace le processus actuel par le nouveau executable, le chemin complet) ✅
 
 
-   
+
+
+### Questions diverses 
+
+- Comprendre pourquoi le l'enfant lis ?
+- Comprendre pourquoi le parent ecris
+
+### BONUS
+
+- Savoir ce que c'est un heredoc ❌
+- Faire les bonus ❌
+
+
    ✅ ❌
-
  
-
+ 
 > [!IMPORTANT]
 > Source : https://reactive.so/post/42-a-comprehensive-guide-to-pipex
 
+|Je vais me detendre
