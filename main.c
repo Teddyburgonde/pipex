@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 13:37:09 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 19:04:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ void	accessible_path(char *argv, t_vars *vars, int cmd)
 	tab = ft_split(argv, ' ');
 	slash = "/";
 	i = 0;
+	if (!tab)
+		return ;
+	if (access(tab[0], X_OK) == 0)
+	{
+		if (cmd == 1)
+			vars->arg_cmd1[0] = tab[0];
+		if (cmd == 2)
+			vars->arg_cmd2[0] = tab[0];
+		return ;
+	}
 	while (vars->paths[i])
 	{
 		tmp = ft_strjoin(vars->paths[i], slash);
@@ -35,15 +45,16 @@ void	accessible_path(char *argv, t_vars *vars, int cmd)
 				vars->arg_cmd1[0] = new_tab;
 			if (cmd == 2)
 				vars->arg_cmd2[0] = new_tab;
+			free(tmp);
 			break ;
 		}
-		//else
-			//ft_printf("Error:\nThe command does not exist or is not accessible.\n");
 		free(tmp);
 		free(new_tab);
 		i++;
 	}
+	ft_free(tab);
 }
+
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars vars;
@@ -58,16 +69,16 @@ int	main(int argc, char **argv, char *envp[])
 	init_arg_cmd1(&vars, argv);
 	init_arg_cmd2(&vars, argv);
 	accessible_path(argv[2], &vars, 1);
-	//ft_printf("%s", vars.arg_cmd2[0]);
 	accessible_path(argv[3], &vars, 2);
 	vars.file1 = argv[1];
 	vars.file2 = argv[4];
 	vars.fd_child = open(vars.file1, O_RDONLY);
 	if (vars.fd_child == -1)
 		exit(1);
+	ft_free(vars.paths);
 	vars.pid = fork();
 	if (vars.pid == -1)
-		perror("Error \nwhen creating the pid");
+		perror("Error\n");
 	if (vars.pid == 0)
 		child_process(&vars, envp);
 	else

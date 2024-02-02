@@ -61,20 +61,23 @@
 - Verifier si on trouve le bon chemin pour la commande ✅
 - Gestion des cas d'erreur ✅
 - free + message d'erreur + exit ✅
-- Exerve (remplace le processus actuel par le nouveau executable, le chemin complet) ✅
-
-
+- Execve (remplace le processus actuel par le nouveau executable, le chemin complet) ✅
 
 
 ### Questions diverses 
 
-- Comprendre pourquoi le l'enfant lis ?
-- Comprendre pourquoi le parent ecris
+- Comprendre pourquoi le l'enfant lis ✅
+- Comprendre pourquoi le parent ecris ✅
+- Comprendre le processus parent ❌
 
 ### BONUS
 
 - Savoir ce que c'est un heredoc ❌
 - Faire les bonus ❌
+
+# NORME 
+- Faire la norme : 
+	. Decouper mes fonctions
 
 
    ✅ ❌

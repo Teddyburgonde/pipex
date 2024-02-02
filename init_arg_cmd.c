@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:41 by tebandam          #+#    #+#             */
-/*   Updated: 2024/01/31 19:15:06 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:53:45 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	init_arg_cmd1(t_vars *vars, char **argv)
 	{
 		vars->arg_cmd1[1] = malloc(size + 1);
 		if (!vars->arg_cmd1[1])
-			exit(1);
+			exit(1);	
 		ft_strncpy(vars->arg_cmd1[1], &argv[2][search_espace(argv[2]) + 1],
 			size + 1);
 		vars->arg_cmd1[1][size] = '\0';
@@ -106,7 +106,6 @@ void	init_arg_cmd2(t_vars *vars, char **argv)
 		ft_strncpy(vars->arg_cmd2[1], &argv[3][search_espace(argv[3]) + 1],
 			size + 1);
 		vars->arg_cmd2[1][size] = '\0';
-		//ft_printf("%s\n", vars->arg_cmd2[1]);
 	}
 	vars->arg_cmd2[2] = NULL; // liberer la memoire
 }
