@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:06:10 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 10:15:53 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:16:04 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	message_wrong_number_of_arguments(void)
 
 void	message_not_permissions(void)
 {
-	perror("Error\nYou don't have permission to open the file\n");
+	perror("Error\n");
 	exit(1);
 }
 
 void	message_pipe_error(void)
 {
-	perror("Error\nThe pipe couldn't be created");
+	perror("Error\n");
+	exit(1);
 }
-

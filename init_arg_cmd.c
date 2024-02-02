@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:41 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 22:06:00 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:44:14 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	init_arg_cmd1(t_vars *vars, char **argv)
 	{
 		vars->arg_cmd1[1] = malloc(size + 1);
 		if (!vars->arg_cmd1[1])
-			exit(1);	
+			exit(1);
 		ft_strncpy(vars->arg_cmd1[1], &argv[2][search_espace(argv[2]) + 1],
 			size + 1);
 		vars->arg_cmd1[1][size] = '\0';
