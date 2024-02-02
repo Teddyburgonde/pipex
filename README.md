@@ -75,6 +75,10 @@
 - Savoir ce que c'est un heredoc ❌
 - Faire les bonus ❌
 
+### LEAKS
+
+- Gerer tous les leaks ✅
+
 # NORME 
 - Faire la norme : 
 	. Decouper mes fonctions
