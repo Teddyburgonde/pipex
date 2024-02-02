@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/01 16:55:20 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:37:09 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	accessible_path(char *argv, t_vars *vars, int cmd)
 		i++;
 	}
 }
-
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars vars;
@@ -61,7 +60,14 @@ int	main(int argc, char **argv, char *envp[])
 	accessible_path(argv[2], &vars, 1);
 	//ft_printf("%s", vars.arg_cmd2[0]);
 	accessible_path(argv[3], &vars, 2);
+	vars.file1 = argv[1];
+	vars.file2 = argv[4];
+	vars.fd_child = open(vars.file1, O_RDONLY);
+	if (vars.fd_child == -1)
+		exit(1);
 	vars.pid = fork();
+	if (vars.pid == -1)
+		perror("Error \nwhen creating the pid");
 	if (vars.pid == 0)
 		child_process(&vars, envp);
 	else

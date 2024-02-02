@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/01 16:54:12 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 10:14:56 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <unistd.h>
+#include <stdio.h>
 
 typedef struct s_vars{
 	pid_t	pid;
