@@ -6,13 +6,13 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:45:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 21:07:05 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:25:01 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	close_pipe(t_vars *vars)
+void	close_pipes(t_vars *vars)
 {
 	close(vars->pipe[0]);
 	close(vars->pipe[1]);
@@ -52,9 +52,10 @@ void	parent_process(t_vars *vars, char **envp)
 	}
 	else
 	{
-		close_pipe(vars);
-		close(vars->fd_parent);
 		wait(NULL);
+		close_pipes(vars);
+		close(vars->fd_parent);
+		close(vars->fd_child);
 	}
 	ft_free(vars->arg_cmd1);
 	ft_free(vars->arg_cmd2);

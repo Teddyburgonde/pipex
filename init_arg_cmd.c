@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:41 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 18:53:45 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 22:06:00 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	init_arg_cmd1(t_vars *vars, char **argv)
 			size + 1);
 		vars->arg_cmd1[1][size] = '\0';
 	}
-	vars->arg_cmd1[2] = NULL; //liberer la memoire
+	vars->arg_cmd1[2] = NULL;
 }
 
 void	init_arg_cmd2(t_vars *vars, char **argv)
@@ -107,5 +107,5 @@ void	init_arg_cmd2(t_vars *vars, char **argv)
 			size + 1);
 		vars->arg_cmd2[1][size] = '\0';
 	}
-	vars->arg_cmd2[2] = NULL; // liberer la memoire
+	vars->arg_cmd2[2] = NULL;
 }

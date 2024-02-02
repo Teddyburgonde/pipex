@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 10:14:56 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 21:14:09 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void 	init_arg_cmd1(t_vars *vars, char **argv);
 void 	init_arg_cmd2(t_vars *vars, char **argv);
 void	child_process(t_vars *vars, char **envp);
 void	parent_process(t_vars *vars, char **envp);
+void	close_pipes(t_vars *vars);
 
 #endif

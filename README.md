@@ -83,6 +83,10 @@
 - Faire la norme : 
 	. Decouper mes fonctions
 
+# Testeur
+
+- Valider au testeur ❌
+
 
    ✅ ❌
  

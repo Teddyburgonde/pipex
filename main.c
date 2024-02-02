@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 19:04:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/02 23:24:38 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,42 +84,3 @@ int	main(int argc, char **argv, char *envp[])
 	else
 		parent_process(&vars, envp);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
