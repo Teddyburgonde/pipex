@@ -81,7 +81,7 @@
 
 # NORME 
 - Faire la norme : 
-	. Decouper mes fonctions
+	. Decouper mes fonctions ✅
 
 # Testeur
 

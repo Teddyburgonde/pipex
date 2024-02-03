@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:52:32 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 23:42:34 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/03 02:08:08 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_vars{
 	char	*file1;
 	char	*file2;
 	char	**paths;
+	char	**tab;
+	char	*tmp;
+	char	*new_tab;
 }t_vars;
 
 void	message_wrong_number_of_arguments(void);
@@ -44,5 +47,7 @@ void	init_arg_cmd2(t_vars *vars, char **argv);
 void	child_process(t_vars *vars, char **envp);
 void	parent_process(t_vars *vars, char **envp);
 void	close_pipes(t_vars *vars);
+void	accessible_path(char *argv, t_vars *vars, int cmd);
+void	check_access(char *path, char **arg_cmd, int cmd);
 
 #endif
