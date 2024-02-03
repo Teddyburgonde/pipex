@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:36:41 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 23:44:14 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/03 05:17:43 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
+
 void	init_arg_cmd1(t_vars *vars, char **argv)
 {
 	int	size;
@@ -87,25 +88,25 @@ void	init_arg_cmd1(t_vars *vars, char **argv)
 	vars->arg_cmd1[2] = NULL;
 }
 
-void	init_arg_cmd2(t_vars *vars, char **argv)
+void init_arg_cmd2(t_vars *vars, char **argv)
 {
-	int	size;
+    int size;
 
-	vars->arg_cmd2 = malloc(sizeof(char *) * 3);
-	if (!vars->arg_cmd2)
-		exit(1);
-	size = ft_strlen_mod(argv[3]);
-	vars->arg_cmd2[0] = NULL;
-	if (argv[3] && search_espace(argv[3]) == 0)
-		vars->arg_cmd2[1] = NULL;
-	else if (argv[3])
-	{
-		vars->arg_cmd2[1] = malloc(size + 1);
-		if (!vars->arg_cmd2[1])
-			exit(1);
-		ft_strncpy(vars->arg_cmd2[1], &argv[3][search_espace(argv[3]) + 1],
-			size + 1);
-		vars->arg_cmd2[1][size] = '\0';
-	}
-	vars->arg_cmd2[2] = NULL;
+    vars->arg_cmd2 = malloc(sizeof(char *) * 3);
+
+    if (!vars->arg_cmd2)
+        exit(1);
+    size = ft_strlen_mod(argv[3]);
+    vars->arg_cmd2[0] = NULL;
+    if (argv[3] && search_espace(argv[3]) == 0)
+        vars->arg_cmd2[1] = NULL;
+    else if (argv[3])
+    {
+        vars->arg_cmd2[1] = malloc(size + 1);
+        if (!vars->arg_cmd2[1])
+            exit(1);
+        ft_strncpy(vars->arg_cmd2[1], &argv[3][search_espace(argv[3]) + 1], size + 1);
+        vars->arg_cmd2[1][size] = '\0';
+    }
+    vars->arg_cmd2[2] = NULL;
 }

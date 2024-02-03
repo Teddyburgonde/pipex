@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:45:11 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/02 23:41:40 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/03 05:07:31 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	parent_process(t_vars *vars, char **envp)
 		close(vars->fd_parent);
 		close(vars->fd_child);
 	}
+	ft_printf("%s\n%s\n", vars->arg_cmd1[0], vars->arg_cmd2[1]);
 	ft_free(vars->arg_cmd1);
 	ft_free(vars->arg_cmd2);
-	exit(1);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/03 02:04:13 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/03 04:56:39 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ int	main(int argc, char **argv, char *envp[])
 	init_arg_cmd2(&vars, argv);
 	accessible_path(argv[2], &vars, 1);
 	accessible_path(argv[3], &vars, 2);
+	//ft_printf("%s\n", vars.arg_cmd1[0]);
 	vars.file1 = argv[1];
 	vars.file2 = argv[4];
 	vars.fd_child = open(vars.file1, O_RDONLY);
 	if (vars.fd_child == -1)
 		exit(1);
 	ft_free(vars.paths);
+	// test
+	//vars.arg_cmd1 = ft_split(argv[2], ' ');
+	//vars.arg_cmd2 = ft_split(argv[3], ' ');
 	vars.pid = fork();
 	if (vars.pid == -1)
 		perror("Error\n");
