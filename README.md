@@ -87,6 +87,12 @@
 
 - Valider au testeur ❌
 
+# Gestion divers bugs 
+
+- Find paths cuted ✅
+- Init_arg with split ✅
+- Refaire le pathfinder ✅
+- Refaire le parsing  ❌
 
    ✅ ❌
  

@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:06:10 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/03 03:09:04 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:53:21 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	message_wrong_number_of_arguments(void)
 
 void	message_not_permissions(void)
 {
-	perror("Error\n");
+	perror("Error :\nYou don't have permissions");
 	exit(1);
 }
 
-void	message_pipe_error(void)
+void	message_file_descriptor_error(void)
 {
-	perror("Error\n");
+	perror("Error\n: Error when opening the file descriptor");
 	exit(1);
 }

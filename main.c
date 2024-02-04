@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: te2bandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: te2bandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:49:13 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/03 04:56:39 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/04 19:52:03 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +19,93 @@ static void	ft_parsing(int argc, char **argv, t_vars *vars)
 {
 	if (argc != 5)
 		message_wrong_number_of_arguments();
+	if (vars->fd_infile == -1 || vars->fd_outfile == -1)
+		message_file_descriptor_error();
 	if (access(argv[1], F_OK) == -1)
 		message_not_permissions();
-	if (pipe(vars->pipe) == -1)
-		message_pipe_error();
 }
+
+
+// POUR LES BONUS 
+
+// int run_sub_process(char **argv, char**envp, int fd_in, int fd_out) {
+// 	int pid = fork();
+// 	if (pid == 0) { // child process
+// 		dup2(fd_in, 0);
+// 		dup2(fd_out, 1);
+// 		close(fd_in);
+// 		close(fd_out);
+// 		execve(argv, envp);
+// 		return (-1);
+// 	}
+// 	return pid;
+// }
 
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars	vars;
 
+	// POUR LES BONUS 
+
+	//convertion des arguments 
+	
+	//a faire struct commande executable arguments entrer sorti
+	// iterer sur le tableau de commande 
+	
+	// t_command commands[] = {};
+
+	// t_command command_actuelle = commands[0];
+
+	// int child_input = infile;
+	// int child_output = -1;
+	// int fds[2];
+
+	// while (command_actuelle) {
+	// 	if (je suis pas la derniere commande) {
+	// 		pipe(fds);
+	// 		child_output = fds[1];
+	// 	} else {
+	// 		child_output =  outfile
+	// 	}
+
+
+	// 	int pid = fork();
+	// 	if (pid == 0) { // child
+	// 		run_subprocess(command, envp, child_input, child_output);
+	// 	}
+
+	// 	close(child_input);
+	// 	close(child_output);
+
+	// 	child_input = fds[0];
+
+	// 	return 0;
+	// }
+	vars.infile = argv[1];
+	vars.outfile = argv[4];
+	pipe(vars.pipe);
+	vars.fd_infile= open(vars.infile, O_RDONLY);
+	vars.fd_outfile = open(vars.outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	ft_parsing(argc, argv, &vars);
-	find_path(envp, &vars);
-	init_arg_cmd1(&vars, argv);
-	init_arg_cmd2(&vars, argv);
-	accessible_path(argv[2], &vars, 1);
-	accessible_path(argv[3], &vars, 2);
-	//ft_printf("%s\n", vars.arg_cmd1[0]);
-	vars.file1 = argv[1];
-	vars.file2 = argv[4];
-	vars.fd_child = open(vars.file1, O_RDONLY);
-	if (vars.fd_child == -1)
-		exit(1);
-	ft_free(vars.paths);
-	// test
-	//vars.arg_cmd1 = ft_split(argv[2], ' ');
-	//vars.arg_cmd2 = ft_split(argv[3], ' ');
-	vars.pid = fork();
-	if (vars.pid == -1)
-		perror("Error\n");
-	if (vars.pid == 0)
-		child_process(&vars, envp);
+	vars.arg_cmd = find_path(envp, &vars);
+	//first command
+	vars.pid1 = fork();
+	if (vars.pid1 == -1)
+		perror("Error\npid1");
+	if (vars.pid1 == 0)
+		child_process(&vars, envp, argv, true);
 	else
-		parent_process(&vars, envp);
+		parent_process(&vars, false);
+	//last command
+	vars.pid2 = fork();
+	if (vars.pid2 == -1)
+		perror("Error\npid2");
+	if (vars.pid2 == 0){
+		child_process(&vars, envp, argv, false);
+	}
+	else
+		parent_process(&vars, true);
+	waitpid(vars.pid1, NULL, 0);
+	waitpid(vars.pid2, NULL, 0);
 }
+
