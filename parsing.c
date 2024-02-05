@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message_error.c                                    :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 15:06:10 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/04 17:53:21 by tebandam         ###   ########.fr       */
+/*   Created: 2024/02/05 10:54:48 by tebandam          #+#    #+#             */
+/*   Updated: 2024/02/05 19:33:37 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	message_wrong_number_of_arguments(void)
+void	ft_parsing(int argc, char **argv, t_vars *vars)
 {
-	perror("Error\npipex : ./pipex file1 cmd1 cmd2 file2\n");
-	exit(1);
-}
-
-void	message_not_permissions(void)
-{
-	perror("Error :\nYou don't have permissions");
-	exit(1);
-}
-
-void	message_file_descriptor_error(void)
-{
-	perror("Error\n: Error when opening the file descriptor");
-	exit(1);
+	if (argc != 5)
+		ft_putstr_fd("Error\n./pipex infile cmd1 cmd2 outfile", 2);
+	if (!vars->infile || !vars->outfile)
+		ft_putstr_fd("Error\nOpening the expired file", 2);
+	if (access(argv[1] , X_OK) == -1)
+		ft_putstr_fd("Error\nYou don't have access", 2);
 }
