@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:03:00 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/06 21:02:04 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:50:24 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars	vars;
-
+	(void)argc;
 	if (pipe(vars.pipe) == -1)
 		return (-1);
-	ft_parsing(argc, argv, &vars);
 	vars.infile = argv[1];
 	vars.outfile = argv[4];
 	vars.fd_infile = open(vars.infile, O_RDONLY);
@@ -30,7 +29,14 @@ int	main(int argc, char **argv, char *envp[])
 	if (vars.pid1 == -1)
 		exit (1);
 	if (vars.pid1 == 0)
-		child_process(&vars, envp);
+		child_process(&vars);
 	else
-		parent_process(&vars, envp);
+		parent_process(&vars);
+	close(vars.pipe[0]);
+	close(vars.pipe[1]);
+	close(vars.fd_infile);
+    close(vars.fd_outfile);
+	ft_free(vars.paths);
+    ft_free(vars.final_path1);
+    ft_free(vars.final_path2);
 }

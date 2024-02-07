@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:24:37 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/06 21:02:41 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/07 10:47:58 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
+	//tab = calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
 	tab = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!tab)
 		return (NULL);
