@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:15:30 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 04:44:42 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 08:31:48 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,41 +28,40 @@ char	**grep_path(char **envp)
 	return (NULL);
 }
 
+void	update_full_cmd(char ***full_cmd, char *is_valid_cmd)
+{
+	free((*full_cmd)[0]);
+	(*full_cmd)[0] = NULL;
+	(*full_cmd)[0] = malloc(ft_strlen(is_valid_cmd) + 1);
+	ft_strlcpy((*full_cmd)[0], is_valid_cmd, ft_strlen(is_valid_cmd) + 1);
+	free(is_valid_cmd);
+}
+
 char	**find_the_accessible_path(char **path, char *command)
 {
-	int		i;
-	char	**full_cmd;
-	char	*is_valid_cmd;
-	char	*bin_path;
-	size_t	arr_len;
-	
-	i = 0;
-	
-	full_cmd = ft_split(command, ' ');
-	if (full_cmd == NULL)
+	t_vars	vars;
+
+	vars.i = 0;
+	vars.full_cmd = ft_split(command, ' ');
+	if (vars.full_cmd == NULL)
 	{
-		ft_free(full_cmd);
+		ft_free(vars.full_cmd);
 		return (NULL);
 	}
-	arr_len = ft_array_len(full_cmd);
-	if (access(full_cmd[0], X_OK) == 0)
-		return (full_cmd);
-	while (path[i])
+	vars.arr_len = ft_array_len(vars.full_cmd);
+	if (access(vars.full_cmd[0], X_OK) == 0)
+		return (vars.full_cmd);
+	while (path[vars.i])
 	{
-		bin_path = ft_strjoin(path[i++], "/");
-		is_valid_cmd = ft_strjoin(bin_path, full_cmd[0]);
-		free(bin_path);
-		if (access(is_valid_cmd, X_OK) == 0)
+		vars.bin_path = ft_strjoin(path[vars.i++], "/");
+		vars.is_valid_cmd = ft_strjoin(vars.bin_path, vars.full_cmd[0]);
+		free(vars.bin_path);
+		if (access(vars.is_valid_cmd, X_OK) == 0)
 		{
-			free(full_cmd[0]);
-			full_cmd[0] = NULL;
-			full_cmd[0] = malloc(ft_strlen(is_valid_cmd) + 1);
-			ft_strlcpy(full_cmd[0], is_valid_cmd, ft_strlen(is_valid_cmd) + 1);
-			free(is_valid_cmd);
+			update_full_cmd(&vars.full_cmd, vars.is_valid_cmd);
 			break ;
 		}
-		// test 
-		free(is_valid_cmd);
+		free(vars.is_valid_cmd);
 	}
-	return (full_cmd);
+	return (vars.full_cmd);
 }

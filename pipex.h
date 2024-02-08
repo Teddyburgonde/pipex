@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:36:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/07 18:07:40 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 06:12:55 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_vars{
 	char	*path;
 	char	**final_path1;
 	char	**final_path2;
+
+	int		i;
+	char	**full_cmd;
+	char	*is_valid_cmd;
+	char	*bin_path;
+	size_t	arr_len;
 }			t_vars;
 
 void	ft_parsing(char **argv, t_vars *vars);

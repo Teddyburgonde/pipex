@@ -6,11 +6,22 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:53:12 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 05:17:08 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:20:10 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	execute_child_parent_processes(t_vars *vars, char *envp[])
+{
+	vars->pid1 = fork();
+	if (vars->pid1 == -1)
+		exit(1);
+	if (vars->pid1 == 0)
+		child_process(vars, envp);
+	else
+		parent_process(vars, envp);
+}
 
 void	child_process(t_vars *vars, char *envp[])
 {
@@ -23,7 +34,7 @@ void	child_process(t_vars *vars, char *envp[])
 	ft_free(vars->final_path1);
 	ft_free(vars->final_path2);
 	ft_free(vars->paths);
-	exit(1); 
+	exit(1);
 }
 
 void	second_child_process(t_vars *vars, char *envp[])
@@ -47,7 +58,6 @@ void	parent_process(t_vars *vars, char *envp[])
 	if (vars->pid2 == -1)
 	{
 		perror("Error : ");
-		// free
 		exit(1);
 	}
 	if (vars->pid2 == 0)
@@ -55,7 +65,7 @@ void	parent_process(t_vars *vars, char *envp[])
 	else
 	{
 		close(vars->fd_infile);
-    	close(vars->fd_outfile);
+		close(vars->fd_outfile);
 		close (vars->pipe[1]);
 		close (vars->pipe[0]);
 		while (waitpid(-1, NULL, 0) != -1)
