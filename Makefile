@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = main.c parsing.c path.c process.c
+SRCS = main.c parsing.c path.c process.c free.c
 
 OBJS=$(SRCS:.c=.o)
 

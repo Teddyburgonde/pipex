@@ -1,1 +1,17 @@
-salut bonjour aurevoir
+free.c
+free.o
+infile.txt
+libft
+main.c
+main.o
+Makefile
+outfile.txt
+parsing.c
+parsing.o
+path.c
+path.o
+pipex
+pipex.h
+process.c
+process.o
+README.md

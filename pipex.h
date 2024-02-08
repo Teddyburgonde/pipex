@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:36:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 06:12:55 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:51:24 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	**find_the_accessible_path(char **path, char *command);
 void	child_process(t_vars *vars, char *envp[]);
 void	second_child_process(t_vars *vars, char *envp[]);
 void	parent_process(t_vars *vars, char *envp[]);
-
+void	execute_child_parent_processes(t_vars *vars, char *envp[]);
+void	ft_full_free(t_vars *vars);
 #endif

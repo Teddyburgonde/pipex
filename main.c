@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:03:00 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 10:21:05 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 11:24:57 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	open_files(t_vars *vars, char **argv)
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars	vars;
-
+	if (!envp || !envp[0])
+		exit(1);
 	if (argc != 5)
 	{
 		ft_putstr_fd("Error\n./pipex infile cmd1 cmd2 outfile\n", 2);
