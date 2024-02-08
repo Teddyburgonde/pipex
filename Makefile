@@ -13,7 +13,7 @@ CFLAGS= -Wall -Wextra -Werror -I./libft/includes -g
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(MAKE) --directory ./libft > /dev/null 2>&1
+	@$(MAKE) --directory ./libft
 	@$(CC) $(CFLAGS) $(OBJS) ./libft/libft.a -o $@
 	@if [ $$? -eq 0 ]; then \
 		echo "\033[32;1mCompilation successful!\033[0m"; \

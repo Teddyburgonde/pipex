@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:15:30 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/07 11:47:13 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 02:55:19 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,40 @@ char	**grep_path(char **envp)
 
 char	**find_the_accessible_path(char **path, char *command)
 {
-	char	*tmp;
-	int		j;
-	char	**if_flag;
-
-	j = 0;
-	if (ft_strchr(command, ' '))
+	int		i;
+	char	**full_cmd;
+	char	*is_valid_cmd;
+	char	*bin_path;
+	size_t	arr_len;
+	
+	i = 0;
+	
+	full_cmd = ft_split(command, ' ');
+	if (full_cmd == NULL)
 	{
-		if_flag = ft_split(command, ' ');
-		tmp = ft_strjoin("/", *if_flag);
+		ft_free(full_cmd);
+		return (NULL);
 	}
-	else
+	arr_len = ft_array_len(full_cmd);
+	if (access(full_cmd[0], X_OK) == 0)
+		return (full_cmd);
+	while (path[i])
 	{
-		if_flag = ft_calloc(sizeof(char *), 2);
-		tmp = ft_strjoin("/", command);
-	}
-	free(if_flag[0]);
-	while (path[j])
-	{
-		if_flag[0] = ft_strjoin(path[j++], tmp);
-		if (access(if_flag[0], X_OK) == 0)
+		bin_path = ft_strjoin(path[i++], "/");
+		is_valid_cmd = ft_strjoin(bin_path, full_cmd[0]);
+		free(bin_path);
+		if (access(is_valid_cmd, X_OK) == 0)
+		{
+			free(full_cmd[0]);
+			full_cmd[0] = NULL;
+			full_cmd[0] = malloc(ft_strlen(is_valid_cmd) + 1);
+			ft_strlcpy(full_cmd[0], is_valid_cmd, ft_strlen(is_valid_cmd) + 1);
 			break ;
-		free(if_flag[0]);
+		}
+		// test 
+		free(is_valid_cmd);
 	}
-	free(tmp);
-	// free(if_flag[0]);  // test
-	// free(if_flag); //test
-	if (if_flag && *if_flag[0])
-		return (if_flag);
-	return (NULL);
+	free(is_valid_cmd);
+	// test
+	return (full_cmd);
 }

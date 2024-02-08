@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:36:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/07 11:01:58 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:07:40 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <stdio.h>
 
 typedef struct s_vars{
 	pid_t	pid1;
@@ -31,13 +32,13 @@ typedef struct s_vars{
 	char	*path;
 	char	**final_path1;
 	char	**final_path2;
-}t_vars;
+}			t_vars;
 
-void	ft_parsing(int argc, char **argv, t_vars *vars);
+void	ft_parsing(char **argv, t_vars *vars);
 char	**grep_path(char **envp);
 char	**find_the_accessible_path(char **path, char *command);
-void	child_process(t_vars *vars);
-void	second_child_process(t_vars *vars);
-void	parent_process(t_vars *vars);
+void	child_process(t_vars *vars, char *envp[]);
+void	second_child_process(t_vars *vars, char *envp[]);
+void	parent_process(t_vars *vars, char *envp[]);
 
 #endif

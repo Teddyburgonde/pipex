@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:05:24 by tebandam          #+#    #+#             */
-/*   Updated: 2023/12/24 12:40:51 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/07 18:13:59 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_list {
 	struct s_list		*next;
 }	t_list;
 size_t					ft_strlen(const char *s);
+size_t					ft_array_len(char **arr);
 void					*ft_memset(void *s, int c, size_t n);
 void					*ft_memcpy(void *dest, const void *src, size_t n);
 size_t					ft_strlcpy(char *dst, const char *src, size_t dstsize);

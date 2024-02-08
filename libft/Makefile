@@ -6,7 +6,7 @@
 #    By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 13:05:47 by tebandam          #+#    #+#              #
-#    Updated: 2023/12/23 15:08:55 by tebandam         ###   ########.fr        #
+#    Updated: 2024/02/07 18:12:44 by tebandam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS=ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.
 	ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c \
 	ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
 	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_free.c \
-	ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c 
+	ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_array_len.c
 
 SRCS+=ft_print_hexa_lowercase.c ft_print_hexa_uppercase.c ft_printf.c \
      ft_putchar.c ft_putstr.c ft_putnbr.c print_ptr_hexa.c
