@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:15:30 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 02:55:19 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 04:44:42 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,11 @@ char	**find_the_accessible_path(char **path, char *command)
 			full_cmd[0] = NULL;
 			full_cmd[0] = malloc(ft_strlen(is_valid_cmd) + 1);
 			ft_strlcpy(full_cmd[0], is_valid_cmd, ft_strlen(is_valid_cmd) + 1);
+			free(is_valid_cmd);
 			break ;
 		}
 		// test 
 		free(is_valid_cmd);
 	}
-	free(is_valid_cmd);
-	// test
 	return (full_cmd);
 }

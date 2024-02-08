@@ -6,13 +6,12 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:53:12 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 02:51:13 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/08 05:17:08 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-//Trouver un moyen de regrouper child process et second child process en une fonction
 void	child_process(t_vars *vars, char *envp[])
 {
 	close(vars->pipe[0]);
@@ -22,6 +21,8 @@ void	child_process(t_vars *vars, char *envp[])
 	execve(vars->final_path1[0], vars->final_path1, envp);
 	perror("Execve");
 	ft_free(vars->final_path1);
+	ft_free(vars->final_path2);
+	ft_free(vars->paths);
 	exit(1); 
 }
 
@@ -34,7 +35,9 @@ void	second_child_process(t_vars *vars, char *envp[])
 	close (vars->fd_outfile);
 	execve(vars->final_path2[0], vars->final_path2, envp);
 	perror("Execve");
+	ft_free(vars->final_path1);
 	ft_free(vars->final_path2);
+	ft_free(vars->paths);
 	exit(1);
 }
 
@@ -43,7 +46,8 @@ void	parent_process(t_vars *vars, char *envp[])
 	vars->pid2 = fork();
 	if (vars->pid2 == -1)
 	{
-		//Free
+		perror("Error : ");
+		// free
 		exit(1);
 	}
 	if (vars->pid2 == 0)
