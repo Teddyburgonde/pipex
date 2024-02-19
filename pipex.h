@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:36:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 10:51:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:24:14 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_vars{
 	size_t	arr_len;
 }			t_vars;
 
-void	ft_parsing(char **argv, t_vars *vars);
 char	**grep_path(char **envp);
 char	**find_the_accessible_path(char **path, char *command);
 void	child_process(t_vars *vars, char *envp[]);

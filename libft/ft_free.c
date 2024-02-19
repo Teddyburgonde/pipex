@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 12:39:48 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/19 14:42:24 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:42:35 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free(char **tab)
 
 	i = 0;
 	while (tab && tab[i])
-	{ 
+	{
 		free(tab[i]);
 		i++;
 	}

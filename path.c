@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:15:30 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/19 15:05:52 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:58:29 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,30 @@ void	update_full_cmd(char ***full_cmd, char *is_valid_cmd)
 	free(is_valid_cmd);
 }
 
+void	build_path(t_vars *vars, char **path)
+{
+	while (path[vars->i])
+	{
+		vars->bin_path = ft_strjoin(path[vars->i++], "/");
+		vars->is_valid_cmd = ft_strjoin(vars->bin_path, vars->full_cmd[0]);
+		free(vars->bin_path);
+		if (access(vars->is_valid_cmd, X_OK) == 0)
+		{
+			update_full_cmd(&vars->full_cmd, vars->is_valid_cmd);
+			break ;
+		}
+		free(vars->is_valid_cmd);
+	}
+}
+
 char	**find_the_accessible_path(char **path, char *command)
 {
 	t_vars	vars;
 
 	vars.i = 0;
 	vars.full_cmd = ft_split(command, ' ');
-	if (vars.full_cmd == NULL || vars.full_cmd[0] == NULL || vars.full_cmd[0][0] == '\0')
+	if (vars.full_cmd == NULL || vars.full_cmd[0] == NULL
+		|| vars.full_cmd[0][0] == '\0')
 	{
 		ft_free(vars.full_cmd);
 		return (NULL);
@@ -51,17 +68,6 @@ char	**find_the_accessible_path(char **path, char *command)
 	vars.arr_len = ft_array_len(vars.full_cmd);
 	if (access(vars.full_cmd[0], X_OK) == 0)
 		return (vars.full_cmd);
-	while (path[vars.i])
-	{
-		vars.bin_path = ft_strjoin(path[vars.i++], "/");
-		vars.is_valid_cmd = ft_strjoin(vars.bin_path, vars.full_cmd[0]);
-		free(vars.bin_path);
-		if (access(vars.is_valid_cmd, X_OK) == 0)
-		{
-			update_full_cmd(&vars.full_cmd, vars.is_valid_cmd);
-			break ;
-		}
-		free(vars.is_valid_cmd);
-	}
+	build_path(&vars, path);
 	return (vars.full_cmd);
 }

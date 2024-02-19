@@ -1,0 +1,11 @@
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt "cat -e" "cat -e" outfile.txt
+
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt "" "cat -e" outfile.txt
+
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt "cat -e" "" outfile.txt
+
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt "" "" outfile.txt
+
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt " " " " outfile.txt
+
+valgrind --leak-check=full --track-fds=yes ./pipex infile.txt "  " "  " outfile.txt

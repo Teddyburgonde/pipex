@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:03:00 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/19 15:06:30 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:44:26 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	open_files(t_vars *vars, char **argv)
 int	main(int argc, char **argv, char *envp[])
 {
 	t_vars	vars;
+
 	if (!envp || !envp[0])
 		exit(1);
 	if (argc != 5)
@@ -38,12 +39,10 @@ int	main(int argc, char **argv, char *envp[])
 		exit(1);
 	}
 	open_files(&vars, argv);
-	//ft_parsing(argv, &vars);
 	vars.paths = grep_path(envp);
 	if (vars.paths == NULL)
 	{
-		// ft_free(vars.paths);
-		// gerer msg d'error
+		ft_putstr_fd("Error\nInvalid path", 2);
 		exit(1);
 	}
 	vars.final_path1 = find_the_accessible_path(vars.paths, argv[2]);
@@ -54,7 +53,7 @@ int	main(int argc, char **argv, char *envp[])
 	{
 		ft_full_free(&vars);
 		close(vars.fd_infile);
-		close(vars.fd_outfile);	
+		close(vars.fd_outfile);
 		exit(1);
 	}
 	if (pipe(vars.pipe) == -1)
