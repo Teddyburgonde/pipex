@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:15:30 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 08:31:48 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:05:52 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**find_the_accessible_path(char **path, char *command)
 
 	vars.i = 0;
 	vars.full_cmd = ft_split(command, ' ');
-	if (vars.full_cmd == NULL)
+	if (vars.full_cmd == NULL || vars.full_cmd[0] == NULL || vars.full_cmd[0][0] == '\0')
 	{
 		ft_free(vars.full_cmd);
 		return (NULL);

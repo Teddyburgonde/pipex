@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:53:12 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/08 10:20:10 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:23:33 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	child_process(t_vars *vars, char *envp[])
 	close(vars->fd_outfile);
 	dup2(vars->fd_infile, STDIN_FILENO);
 	dup2(vars->pipe[1], STDOUT_FILENO);
-	execve(vars->final_path1[0], vars->final_path1, envp);
-	perror("Execve");
+	if (vars->final_path1 && vars->final_path1[0]) // TODO jimmy
+		execve(vars->final_path1[0], vars->final_path1, envp);
+	perror("Cmd1");
+	close(vars->pipe[0]);
+	close(vars->pipe[1]);
+	close(vars->fd_infile);
 	ft_free(vars->final_path1);
 	ft_free(vars->final_path2);
 	ft_free(vars->paths);
@@ -44,8 +48,12 @@ void	second_child_process(t_vars *vars, char *envp[])
 	close (vars->pipe[0]);
 	dup2(vars->fd_outfile, STDOUT_FILENO);
 	close (vars->fd_outfile);
-	execve(vars->final_path2[0], vars->final_path2, envp);
-	perror("Execve");
+	if (vars->final_path2 && vars->final_path2[0]) // TODO jimmy
+		execve(vars->final_path2[0], vars->final_path2, envp);
+	perror("Cmd2");
+	close(vars->pipe[0]);
+	close(vars->pipe[1]);
+	close(vars->fd_infile);
 	ft_free(vars->final_path1);
 	ft_free(vars->final_path2);
 	ft_free(vars->paths);
