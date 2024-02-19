@@ -6,7 +6,7 @@
 /*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:36:46 by tebandam          #+#    #+#             */
-/*   Updated: 2024/02/19 16:24:14 by tebandam         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:22:26 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ void	second_child_process(t_vars *vars, char *envp[]);
 void	parent_process(t_vars *vars, char *envp[]);
 void	execute_child_parent_processes(t_vars *vars, char *envp[]);
 void	ft_full_free(t_vars *vars);
+void	open_files(t_vars *vars, char **argv);
+void	verif_paths(t_vars *vars);
+void	error_vars_final_path2(t_vars *vars);
+
 #endif
